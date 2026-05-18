@@ -1,0 +1,1 @@
+x = 11 #global serve para manipular a variavel de fora, agora passei um outro valor
