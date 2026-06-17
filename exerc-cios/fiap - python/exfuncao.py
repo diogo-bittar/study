@@ -75,4 +75,4 @@ for i in range(10):
     lista20.append(lista6[i])
 print(lista20)
 #------------------------------------------------#
-#Preciso melhorar meu pensamento e lógica. Refazer em casa os exercícios novamente
+#Preciso melhorar meu pensamento e lógica.
