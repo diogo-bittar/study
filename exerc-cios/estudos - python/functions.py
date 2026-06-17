@@ -1,7 +1,7 @@
 jogos = []
 
 def cadastrarJogo():
-    nomeJogo = input("Informe o nome do jogo que deseja cadastrar: ")
+    nomeJogo = input("Cadastre o nome do seu jogo: ")
     generoJogo = input("Qual o gênero deste jogo?: ")
 
     while True:
@@ -9,21 +9,20 @@ def cadastrarJogo():
             anoLancamento = int(input("Qual o ano de lançamento desse jogo?: "))
 
             if anoLancamento <= 0:
-                print("Ops, precisa ser um ano válido.")
+                print("O ano precisa ser válido. (AAAA)")
                 continue
-
             break
 
         except ValueError:
-            print("Ops, precisa ser um ano válido.")
+            print("Ops, precisa ser um ano válido. (AAAA)")
 
-    desenvolvedora = input("Quem é a desenvolvedora?: ")
+    desenvolvedora = input("Quem é a desenvolvedora do seu jogo?: ")
 
     jogos.append([nomeJogo, generoJogo, anoLancamento, desenvolvedora])
 
 def listarJogos():
     if not jogos:
-        return "Poxa, nenhum jogo cadastrado!\nQue tal adicionar um novo jogo? :)"
+        return "Poxa, nenhum jogo foi cadastrado!\nQue tal adicionar um novo jogo? :)"
     
     texto = ""
 
