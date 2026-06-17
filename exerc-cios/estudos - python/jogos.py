@@ -34,15 +34,22 @@ while True:
     print("2 - Listar jogos")
     print("3 - Atualizar jogo")
     print("4 - Remover jogo")
-    print("5 - Sair")
+    print("5 - Sair\n")
 
-    opcao = input("Escolha uma opção: \n")
+    opcao = input("Escolha uma opção: ")
 
     match opcao:
         case "1":
-            cadastrarJogo()
+            print(cadastrarJogo())
         case "2":
             print(listarJogos())
+
+        case "3":
+            print(atualizarJogos())
+
+        case "4":
+            print(removerJogos())
+
         case "5":
             print("Encerrando o sistema...")
             break

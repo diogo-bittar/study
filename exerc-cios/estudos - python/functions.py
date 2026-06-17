@@ -32,7 +32,44 @@ def listarJogos():
     return texto
 
 def atualizarJogos():
-    ...
+    if not jogos:
+        return "Ops, nenhum jogo para atualizar."
+    nomeJogo = input("Digite o nome do jogo que você deseja atualizar: ")
+
+    for jogo in jogos:
+        if jogo[0].lower() == nomeJogo.lower():
+            jogo[0] = input("Novo nome: ")
+            jogo[1] = input("Novo gênero: ")
+
+            while True:
+                try:
+                    ano = int(input("Novo ano de lançamento: "))
+
+                    if ano <= 0:
+                        print("Ops, precisa ser um ano válido.")
+                        continue
+
+                    jogo[2] = ano
+                    break
+
+                except ValueError:
+                    print("Ops, precisa ser um ano válido.")
+
+            jogo[3] = input("Nova desenvolvedora: ")
+
+            return "Jogo atualizado com sucesso! :)"
+
+    return "Jogo não encontrado."
 
 def removerJogos():
-    
+    if not jogos:
+        return "Ops, nenhum jogo para remover."
+
+    nomeJogo = input("Digite o nome do jogo que você deseja remover: ")
+
+    for jogo in jogos:
+        if jogo[0].lower() == nomeJogo.lower():
+            jogos.remove(jogo)
+            return "Jogo removido com sucesso! :)"
+
+    return "Jogo não encontrado."
