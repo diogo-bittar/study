@@ -27,7 +27,7 @@ def listarJogos():
     texto = ""
 
     for jogo in jogos:
-        texto += f"Nome: {jogo[0]}\nGênero: {jogo[1]}\nAno: {jogo[2]}\nDesenvolvedora: {jogo[3]}\n"
+        texto += f"\nNome: {jogo[0]}\nGênero: {jogo[1]}\nAno: {jogo[2]}\nDesenvolvedora: {jogo[3]}\n"
     return texto
 
 def atualizarJogos():
