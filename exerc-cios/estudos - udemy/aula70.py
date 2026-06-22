@@ -1,3 +1,0 @@
-"""
-Retorno de valores (return)
-"""
