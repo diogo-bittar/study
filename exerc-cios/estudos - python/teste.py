@@ -1,14 +1,13 @@
 import time
-
 task = []
-
+#----
 def validText(text):
     return text.strip() != ""
-
+#----
 def validStatus(status):
     status = status.strip().lower()
     return status in ["feito", "em andamento", "não realizada"]
-
+#----
 def taskAdd():
     while True:
         taskName = input("Nomeie essa tarefa: ").strip()
@@ -43,7 +42,7 @@ def taskAdd():
                 return
 
             print("Status inválido! Tente novamente.")
-
+#----
 def listTask():
     if not task:
         return "Nenhuma tarefa foi listada...\nQue tal listar alguma?"
@@ -59,7 +58,7 @@ def listTask():
         )
 
     return texto
-
+#----
 def atualizarTask():
     if not task:
         return "Nenhuma tarefa para atualizar."
@@ -79,7 +78,7 @@ def atualizarTask():
                 print("Status inválido! Tente novamente.")
 
     return "Tarefa não encontrada."
-
+#----
 def removeTask():
     if not task:
         return "Nenhuma tarefa para remover."
@@ -90,6 +89,6 @@ def removeTask():
         if t[0].lower() == taskName.strip().lower():
             task.remove(t)
             print("Tarefa removida com sucesso.")
-            
+
     return "Tarefa não encontrada."        
-        
+#----
