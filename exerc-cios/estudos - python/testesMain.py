@@ -18,7 +18,7 @@ while True:
         case "3":
             print(atualizarTask())
         case "4":
-            removeTask()
+            print(removeTask())
         case "5":
             print("Até breve! :)\nSistema encerrando...")
             break
