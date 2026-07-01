@@ -90,5 +90,6 @@ def removeTask():
         if t[0].lower() == taskName.strip().lower():
             task.remove(t)
             print("Tarefa removida com sucesso.")
-        else:
-            print("Tarefa não encontrada.")
+            
+    return "Tarefa não encontrada."        
+        
