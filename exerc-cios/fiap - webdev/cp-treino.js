@@ -16,17 +16,17 @@
 //   calcularDesconto(-10, 20)  → "Preço inválido."
 //   calcularDesconto(100, 110) → "Desconto inválido."
 
-function calcularDesconto(preco, desconto){
-  if(typeof preco !== "number" || preco <= 0){
-    return "Preço Inválido."
-  }
+
+function calculeDesconto(preco, desconto){
+  if(typeof preco !== "number" || preco <= 0 ){
+    return 'Preço inválido.'
+  };
   if(typeof desconto !== "number" || desconto < 0 || desconto > 100){
     return "Desconto inválido."
-  }
-
+  };
   const precoFinal = preco - (preco * desconto / 100);
-  return `De R$ ${preco} por R$ ${precoFinal.toFixed(2)}. `
-}
+  return `De R$ ${preco} por R$ ${precoFinal.toFixed(2)}.`
+};
 
 //
 
@@ -48,31 +48,25 @@ function calcularDesconto(preco, desconto){
 //   calcularMulta(-10, 3)   → "Valor inválido."
 //   calcularMulta(100, -1)  → "Valor inválido."
 //   calcularMulta("100", 3) → "Valor inválido."
-function calcularMulta(valorOriginal, diasAtraso){
-  if(typeof valorOriginal !== "number" || typeof diasAtraso !== "number" || isNaN(valorOriginal) || isNaN(diasAtraso)
-  ){
-    return "Valor inválido.";
-  }
 
+function calcularMulta(valorOriginal, diasAtraso){
+  if(typeof valorOriginal !== "number" || typeof diasAtraso !== "number" || isNaN(valorOriginal) || isNaN(diasAtraso)){
+    return "Valor inválido.";
+  };
   if(valorOriginal < 0 || diasAtraso < 0){
     return "Valor inválido.";
-  }
-
+  };
   let total = valorOriginal;
   let dia = 1;
 
   if(diasAtraso > 0){
     do{
       total += 10;
-      dia++;
-    }while (dia <= diasAtraso);
-  }
-
+      dia++
+    }while(dia <= diasAtraso);
+  };
   return `Total: R$ ${total.toFixed(2)}`;
-}
-
-//
-
+};
 
 // ## Conversor de Moeda (2 pontos)
 // **Enunciado:**
@@ -99,28 +93,22 @@ function calcularMulta(valorOriginal, diasAtraso){
 //   converterMoeda(100, "USD")        → "Moeda de origem inválida."
 
 function converterMoeda(valor, moedaAtual, moedaDestino = "USD"){
-  if(typeof valor !== "number" || isNaN(valor) || valor <= 0){
-    return "Valor inválido."
-  }
+  if(typeof valor !== "number" || valor <= 0){
+    return "Valor inválido.";
+  };
   if(moedaAtual !== "BRL"){
-    return "Moeda de origem inválida."
-  }
-
-  const moedas = {
-    USD = 5.70,
-    EUR = 6.20,
-    GBP = 7.10
-  }
-
+    return "Moeda de origem inválida.";
+  };
+  const moedas ={
+    USD: 5.70,
+    EUR: 6.20,
+    GBP: 7.10
+  };
   if(!moedas[moedaDestino]){
-    return "Moeda de destino inválida."
-  }
-
-  const resultado = valor / moedas[moedaDestino].toFixed(2);
-
-  return `${valor} = ${resultado} ${moedaDestino}`
-}
-
+    return "Moeda de destino inválida.";
+  };
+  const resultado = (valor / moedas[moedaDestino]).toFixed(2);
+  return `R$ ${valor} = ${resultado} ${moedaDestino}`;
 //
 
 // ## Descrição de Soma (2 pontos)
@@ -135,14 +123,14 @@ function converterMoeda(valor, moedaAtual, moedaDestino = "USD"){
 //   descreverSoma(3, 7)    → "A soma de 3 e 7 é 10."
 //   descreverSoma("3", 7)  → "Valores inválidos."
 //   descreverSoma(5, true) → "Valores inválidos."
+
 function descreverSoma(a, b){
   if(typeof a !== "number" || typeof b !== "number" || isNaN(a) || isNaN(b)){
-    return "Valores inválidos."
-  };
+    return "Valores inválidos.";
+  }
+  const resultado = a + b;
 
-  const soma = a + b;
-
-  return `A soma de ${a} e ${b} é ${soma}.`;
+  return `A soma de ${a} e ${b} é ${resultado}.`;
 }
 
 // 
@@ -180,6 +168,47 @@ function lancarDados(n){
 
     if(resultado > maior){
       maior = resultado;
+    };
+    if(resultado < menor){
+      menor = resultado;
+    };
+  };
+
+  return `Lançamentos: ${n} | Soma: ${soma} | Maior: ${maior} | Menor: ${menor}`;
+};
+
+// ## Lançador de Dados (2 pontos)
+// **Enunciado:**
+// Implemente a função lancarDados, que recebe um número inteiro n
+// (quantidade de lançamentos de um dado de 6 faces).
+//
+// A função deve:
+// - Retornar "Inválido." se n não for número, for NaN, menor que 0 ou não inteiro.
+// - Caso válido, usar um loop FOR para simular n lançamentos,
+//   gerando números inteiros aleatórios de 1 a 6.
+// - Retornar a string:
+//   "Lançamentos: <n> | Soma: <soma> | Maior: <maior> | Menor: <menor>"
+//
+// Exemplos (valores aleatórios, mas formato sempre igual):
+//   lancarDados(5) → "Lançamentos: 5 | Soma: 18 | Maior: 6 | Menor: 2"
+//   lancarDados(0) → "Inválido."
+//   lancarDados(1.5) → "Inválido."
+function lancarDados(n){
+  if(typeof n !== "number" || isNaN(n) || n <= 0 || n % 1 !== 0){
+    return "Inválido.";
+  }
+
+  let soma = 0;
+  let maior = 0;
+  let menor = 6;
+
+  for(let i = 0; i < n; i++){
+    let resultado = Math.floor(Math.random() * 6) + 1;
+
+    soma += resultado;
+
+    if(resultado > maior){
+      maior = resultado;
     }
     if(resultado < menor){
       menor = resultado;
@@ -187,33 +216,4 @@ function lancarDados(n){
   }
 
   return `Lançamentos: ${n} | Soma: ${soma} | Maior: ${maior} | Menor: ${menor}`;
-}
-
-//
-
-// ## Verificador de Comprimento e Presença de Palavras (2 pontos)
-// **Enunciado:**
-// Implemente a função verificarPalavra, que recebe uma frase e uma palavraBusca e:
-// - Remove espaços extras no início e no final da frase antes de realizar a verificação.
-// - Retorna "A frase é muito curta" se o comprimento da frase for menor que 5 caracteres.
-// - Retorna "A frase contém a palavra de busca" se palavraBusca estiver contida
-//   dentro da frase, ignorando maiúsculas e minúsculas.
-// - Retorna "A frase não contém a palavra de busca" caso contrário.
-//
-// Exemplos:
-//   verificarPalavra("Olá", "olá")               → "A frase é muito curta"
-//   verificarPalavra("  JavaScript é incrível  ", "javascript") → "A frase contém a palavra de busca"
-//   verificarPalavra("JavaScript é incrível", "python") → "A frase não contém a palavra de busca"
-function verificarPalavra(frase, palavraBusca){
-  frase = frase.trim();
-
-  if(frase.length < 5 ){
-    return "A frase é muito curta."
-  };
-
-  if(frase.toLowerCase().includes(palavraBusca.toLowerCase())){
-    return "A frase contém a palavra de busca."
-  };
-
-  return "A frase não contém a palavra de busca.";
 }
