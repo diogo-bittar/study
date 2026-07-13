@@ -30,7 +30,7 @@ def pedirNotas():
 def situacaoAluno(nome, notas):
     media = sum(notas) / len(notas)
 
-    if media >= 7:
+    if media >= 6:
         return f"{nome} está aprovado com média {media:.2f}."
     elif media >= 5:
         return f"{nome} está de exame com média {media:.2f}."

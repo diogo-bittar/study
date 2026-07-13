@@ -1,4 +1,4 @@
-from defs import pedirNome, pedirNotas, situacaoAluno
+from notas import pedirNome, pedirNotas, situacaoAluno
 
 print("\n**********************************")
 print("Sistema de notas. Seja Bem-Vindo!")
