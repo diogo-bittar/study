@@ -1,4 +1,4 @@
-from funcoes import perguntar, inserir, pesquisar, excluir, listar
+from fuctions import perguntar, inserir, pesquisar, excluir, listar
 
 usuarios = {}
 

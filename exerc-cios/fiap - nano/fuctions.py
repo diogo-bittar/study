@@ -22,6 +22,7 @@ def inserir(dicionario):
 
     dicionario[login] = [nome, ultimo_acesso, estacao]
     print(f"Usuário {login} inserido com sucesso.\n")
+    salve(dicionario)
 
 
 def pesquisar(dicionario):
@@ -40,6 +41,7 @@ def excluir(dicionario):
     if login in dicionario:
         del dicionario[login]
         print(f"Usuário {login} excluído com sucesso.\n")
+
     else:
         print("Usuário não encontrado.\n")
 
@@ -51,3 +53,10 @@ def listar(dicionario):
 
     for login, (nome, acesso, estacao) in dicionario.items():
         print(f"Login: {login}\nNome: {nome}\nÚltimo acesso: {acesso}\nEstação: {estacao}\n")
+
+
+
+def salve(dicionario):
+    with open("bd.txt", "a") as arquivo:
+        for chave, valor in dicionario.items():
+            arquivo.write(chave + ":" + str(valor))
