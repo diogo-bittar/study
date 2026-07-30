@@ -56,3 +56,30 @@
 // }
 
 // 5)
+
+const fila = [];
+let opc = "";
+
+do{
+
+    opc = prompt("Escolha uma opção:\nVIP, REGULAR, ATENDER ou SAIR. ").toUpperCase();
+
+    if(opc === "VIP"){
+        let name = prompt("Nome do cliente VIP: ");
+        fila.unshift(name);
+    } else if(opc === "REGULAR"){
+        let name = prompt("Nome do cliente REGULAR: ");
+        fila.push(name);
+    } else if(opc === "ATENDER"){
+        if(fila.length > 0){
+            let atendido = fila.shift();
+            alert(`Atendendo: ${atendido}.`);
+        }else{
+            alert("A fila está vazia.");
+        }
+    }
+    if(opc !== "SAIR"){
+        console.log(`Fila atual: ${fila}.`)
+        alert(`Fila atual: ${fila},\n.`)
+    }
+} while(opc !== "SAIR");
