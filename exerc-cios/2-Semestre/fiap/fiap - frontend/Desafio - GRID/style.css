@@ -1,0 +1,48 @@
+header {
+    grid-area: header;
+    background-color: aqua;
+}
+
+footer {
+    grid-area: footer;
+    background-color: blue;
+}
+
+nav {
+    grid-area: nav;
+    background-color: brown;
+}
+
+aside {
+    grid-area: publicidade;
+    background-color: burlywood;
+}
+
+section#produtos {
+    grid-area: produtos;
+    background-color: darkcyan;
+}
+
+section#servicos {
+    grid-area: servicos;
+    background-color: darkolivegreen;
+}
+
+#grade>* {
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+#grade {
+    display: grid;
+
+    grid-template-areas:
+        "nav nav produtos produtos produtos"
+        "nav nav servicos servicos header"
+        "publicidade publicidade servicos servicos footer";
+
+    grid-template-columns: 20% auto 15%;
+    grid-row-start: 100px 1fr 1fr 75px;
+    height: 100vh;
+    gap: 15px;
+}
