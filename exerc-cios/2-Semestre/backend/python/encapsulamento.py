@@ -175,22 +175,121 @@
 
 
 #Revisao 
-class Produtos():
-    def __init__(self, preco):
-        self.preco = preco
+# class Produtos():
+#     def __init__(self, preco):
+#         self.preco = preco
+
+#     @property
+#     def preco(self):
+#         return self._preco
+
+#     @preco.setter
+#     def preco(self, valor):
+#         if valor <= 0:
+#             raise ValueError("Valor inválido!")
+#         self._preco = valor
+
+#     def aplicarDesconto(self, percentual):
+#         return self.preco * (1 - percentual / 100)
+
+# produto = Produtos(100)
+# print(produto.aplicarDesconto(10))  # 90.0
+
+
+# ============================================================
+# NOVOS EXERCÍCIOS - ENCAPSULAMENTO
+# ============================================================
+# Faça os exercícios abaixo sem consultar uma solução pronta.
+# Em cada classe, use atributos privados com underline, properties,
+# setters para validar os valores e métodos para executar ações.
+# Teste também valores inválidos usando try/except.
+
+
+# EXERCÍCIO 6 - Conta bancária protegida
+# Crie uma classe Conta com os atributos privados _titular e _saldo.
+# Crie uma property somente para leitura chamada saldo.
+# Crie depositar(valor), aceitando apenas valores maiores que zero.
+# Crie sacar(valor), impedindo saque maior que o saldo.
+# Retorne mensagens informando o resultado de cada operação.
+# Teste depósito válido, saque válido e duas operações inválidas.
+
+class Conta:
+    def __init__(self, titular, saldo_inicial):
+        self._titular = titular
+        self._saldo = saldo_inicial
 
     @property
-    def preco(self):
-        return self._preco
+    def saldo(self):
+        return self._saldo
 
-    @preco.setter
-    def preco(self, valor):
+    def depositar(self, valor):
         if valor <= 0:
-            raise ValueError("Valor inválido!")
-        self._preco = valor
+            raise ValueError("O valor do depósito deve ser maior que zero.")
+        self._saldo += valor
+        return f"Depósito de R$ {valor:.2f} realizado com sucesso. Saldo atual: R$ {self._saldo:.2f}"
 
-    def aplicarDesconto(self, percentual):
-        return self.preco * (1 - percentual / 100)
+    def sacar(self, valor):
+        if valor <= 0:
+            raise ValueError("O valor do saque deve ser maior que zero.")
+        if valor > self._saldo:
+            raise ValueError(f"Saldo insuficiente. Saldo atual: R$ {self._saldo:.2f}")
+        
+        self._saldo -= valor
+        return f"Saque de R$ {valor:.2f} realizado com sucesso. Saldo atual: R$ {self._saldo:.2f}"
+if __name__ == "__main__":
+    # Criando a conta
+    minha_conta = Conta("João", 1000.0)
+    print(f"Titular: {minha_conta._titular}")
+    print(f"Saldo inicial: R$ {minha_conta.saldo:.2f}\n")
 
-produto = Produtos(100)
-print(produto.aplicarDesconto(10))  # 90.0
+    # 1. Teste de depósito válido
+    print(minha_conta.depositar(500.0))
+
+    # 2. Teste de saque válido
+    print(minha_conta.sacar(200.0))
+
+    # 3. Testes de operações inválidas (descomente para testar as exceções)
+    try:
+        minha_conta.depositar(-50)
+    except ValueError as e:
+        print(f"Erro capturado (Depósito inválido): {e}")
+
+    try:
+        minha_conta.sacar(5000)
+    except ValueError as e:
+        print(f"Erro capturado (Saque maior que o saldo): {e}")
+
+
+# EXERCÍCIO 7 - Aluno e nota
+# Crie uma classe Aluno com nome e nota.
+# A nota deve ser uma property com setter.
+# Aceite somente notas entre 0 e 10.
+# Crie aprovado(), retornando True se a nota for maior ou igual a 6.
+# Teste uma nota válida e uma nota fora do intervalo.
+
+
+# EXERCÍCIO 8 - Produto com estoque
+# Crie uma classe EstoqueProduto com nome, preco e quantidade.
+# Valide o preco para que nunca seja menor ou igual a zero.
+# Valide a quantidade para que nunca seja negativa.
+# Crie vender(quantidade), recusando vendas maiores que o estoque.
+# Crie repor(quantidade), aceitando somente quantidades maiores que zero.
+# Crie valor_total(), retornando preco vezes quantidade.
+
+
+# EXERCÍCIO 9 - Retângulo completo
+# Crie uma classe RetanguloSeguro com altura e largura.
+# Use properties para altura e largura.
+# Não aceite medidas menores ou iguais a zero.
+# Crie as properties area e perimetro.
+# Altere uma medida depois de criar o objeto e mostre os novos resultados.
+
+
+# EXERCÍCIO 10 - Carrinho de compras
+# Crie uma classe Carrinho com uma lista privada chamada _itens.
+# Cada item pode ser um dicionário com produto, preco e quantidade.
+# Crie uma property itens que devolva a lista de itens.
+# Crie adicionar_item(produto, preco, quantidade).
+# Não aceite preco menor ou igual a zero nem quantidade menor ou igual a zero.
+# Crie total() para calcular o valor total da compra.
+# Teste o carrinho com pelo menos dois produtos.
