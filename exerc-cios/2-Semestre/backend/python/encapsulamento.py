@@ -1,199 +1,199 @@
-# """
-# Módulo 2 - Encapsulamento
-# """
+"""
+Módulo 2 - Encapsulamento
+"""
 
-# #exemplo 
-# class ProdutoExemplo:
-#     def __init__(self, preco):
-#         self._preco = preco
+#exemplo 
+class ProdutoExemplo:
+    def __init__(self, preco):
+        self._preco = preco
 
-#     @property
-#     def preco(self):
-#         return self._preco
+    @property
+    def preco(self):
+        return self._preco
 
-#     @preco.setter
-#     def preco(self, valor):
-#         if valor < 0:
-#             raise ValueError("Preço não pode ser negativo")
-#         self._preco = valor
+    @preco.setter
+    def preco(self, valor):
+        if valor < 0:
+            raise ValueError("Preço não pode ser negativo")
+        self._preco = valor
 
-# p = ProdutoExemplo(10)
-# p.preco = -5  # aqui o programa para e mostra o ValueError
-
-
-# #ex 1
-# class ContaBancaria:
-#     def __init__(self, valor):
-#         self._valor = valor
-
-#     @property
-#     def valor(self):
-#         return self._valor
-
-#     def depositar(self, valor):
-#         if valor == 0 or valor < 0:
-#             raise ValueError("Valor de depósito inválido")
-#         self._valor += valor
-#         return f"vc depositou {self._valor}"
-
-#     def sacar(self, valor):
-#         if valor > self._valor or valor == 0 or valor < 0:
-#             raise ValueError("Valor de saque inválido ou saldo insuficiente")
-#         self._valor -= valor
-#         return f"Você sacou {valor}.\nSaldo restante {self._valor}."
+p = ProdutoExemplo(10)
+p.preco = -5  # aqui o programa para e mostra o ValueError
 
 
-# deposito = ContaBancaria(155)
-# print(deposito.depositar(100))   # funciona normal, imprime a confirmação
-# print(deposito.sacar(50))        # funciona normal, imprime a confirmação
+#ex 1
+class ContaBancaria:
+    def __init__(self, valor):
+        self._valor = valor
 
-# deposito.sacar(-10)              # aqui o programa PARA e mostra o ValueError
-# print("essa linha nunca roda")   # porque o raise acima interrompeu tudo
+    @property
+    def valor(self):
+        return self._valor
 
-# #ex 2
-# class Pessoa():
-#     def __init__(self, idade):
-#         self._idade = idade
+    def depositar(self, valor):
+        if valor == 0 or valor < 0:
+            raise ValueError("Valor de depósito inválido")
+        self._valor += valor
+        return f"vc depositou {self._valor}"
 
-#     @property
-#     def idade(self):
-#         return self._idade
-
-#     @idade.setter
-#     def idade(self, valor):
-#         if valor < 0:
-#             raise ValueError("Idade negativa não pode")
-#         self._idade = valor
-# pessoa = Pessoa(25)
-# print(pessoa.idade)
-
-# pessoa.idade = 18
-# print(pessoa.idade)
-
-# pessoa.idade = -1
-
-# #ex 3
-# class Retangulo:
-#     def __init__(self, altura: float, largura: float):
-#         self._altura = altura
-#         self._largura = largura
+    def sacar(self, valor):
+        if valor > self._valor or valor == 0 or valor < 0:
+            raise ValueError("Valor de saque inválido ou saldo insuficiente")
+        self._valor -= valor
+        return f"Você sacou {valor}.\nSaldo restante {self._valor}."
 
 
-#     @property
-#     def area(self) -> float:
-#         return self._altura * self._largura
+deposito = ContaBancaria(155)
+print(deposito.depositar(100))   # funciona normal, imprime a confirmação
+print(deposito.sacar(50))        # funciona normal, imprime a confirmação
+
+deposito.sacar(-10)              # aqui o programa PARA e mostra o ValueError
+print("essa linha nunca roda")   # porque o raise acima interrompeu tudo
+
+#ex 2
+class Pessoa():
+    def __init__(self, idade):
+        self._idade = idade
+
+    @property
+    def idade(self):
+        return self._idade
+
+    @idade.setter
+    def idade(self, valor):
+        if valor < 0:
+            raise ValueError("Idade negativa não pode")
+        self._idade = valor
+pessoa = Pessoa(25)
+print(pessoa.idade)
+
+pessoa.idade = 18
+print(pessoa.idade)
+
+pessoa.idade = -1
+
+#ex 3
+class Retangulo:
+    def __init__(self, altura: float, largura: float):
+        self._altura = altura
+        self._largura = largura
 
 
-# retangulo = Retangulo(5, 3)
-# print(f"Área do retângulo: {retangulo.area: .1f}")
-
-# retangulo_decimal = Retangulo(2.5, 4)
-# print(f"Área do retângulo decimal: {retangulo_decimal.area}")
-
-# #ex 4 exibir um cenario em que preco é um atributo publico e exibir um erro que poderia acontecer
-# class Produto:
-#     def __init__(self, nome, preco, estoque):
-#         self.nome = nome
-#         self.preco = preco
-#         self.estoque = estoque
-
-#     def venderProduto(self, qtd):
-#         if qtd > self.estoque:
-#             return "Estoque insuficiente"
-#         self.estoque -= qtd
-#         return f"Você vendeu {qtd}."
-
-#     def reporProduto(self, qtd):
-#         if qtd <= 0:
-#             return "Quantidade inválida para reposição"
-#         self.estoque += qtd
-#         return f"Estoque foi reposto para {self.estoque}"
+    @property
+    def area(self) -> float:
+        return self._altura * self._largura
 
 
-# notebook = Produto("Notebook", 3200, 10)
+retangulo = Retangulo(5, 3)
+print(f"Área do retângulo: {retangulo.area: .1f}")
 
-# notebook.preco = -1500.00 #alteração direta
-# print(f"Preço atualizado indevidamente: R$ {notebook.preco}") 
+retangulo_decimal = Retangulo(2.5, 4)
+print(f"Área do retângulo decimal: {retangulo_decimal.area}")
 
+#ex 4 exibir um cenario em que preco é um atributo publico e exibir um erro que poderia acontecer
+class Produto:
+    def __init__(self, nome, preco, estoque):
+        self.nome = nome
+        self.preco = preco
+        self.estoque = estoque
 
-# print(notebook.venderProduto(3))   
-# print(notebook.estoque)            
+    def venderProduto(self, qtd):
+        if qtd > self.estoque:
+            return "Estoque insuficiente"
+        self.estoque -= qtd
+        return f"Você vendeu {qtd}."
 
-# print(notebook.venderProduto(50))  
-# print(notebook.estoque)            
-
-# print(notebook.reporProduto(20))    
-# print(notebook.estoque)             
-
-# print(notebook.reporProduto(-5))    
-# print(notebook.estoque)           
-
-# #ex 5 integrador
-# class Termometro():
-#     def __init__(self, celsius,fahrenheit):
-#           self.celsius = celsius
-#           self.fahrenheit = fahrenheit
-
-#     @property
-#     def celsius(self):
-#         return self._celsius
-
-#     @celsius.setter
-#     def celsius(self, temperatura):
-#         if temperatura < -273.15:
-#             raise ValueError("Temperatura abaixo de zero absoluto não pode.")
-#         self._celsius = temperatura
-#         self._fahrenheit = (temperatura * 9 / 5) + 32
-
-#     @property
-#     def fahrenheit(self):
-#         return self._fahrenheit
-
-#     @fahrenheit.setter
-#     def fahrenheit(self, temperatura):
-#         celsius = (temperatura - 32) * 5 / 9
-#         if celsius < -273.15:
-#             raise ValueError("Temperatura abaixo de zero absoluto não pode.")
-#         self._fahrenheit = temperatura
-#         self._celsius = celsius
+    def reporProduto(self, qtd):
+        if qtd <= 0:
+            return "Quantidade inválida para reposição"
+        self.estoque += qtd
+        return f"Estoque foi reposto para {self.estoque}"
 
 
-# termometro = Termometro(25, 77)
-# print(f"Celsius: {termometro.celsius}")
-# print(f"Fahrenheit: {termometro.fahrenheit}")
+notebook = Produto("Notebook", 3200, 10)
 
-# termometro.celsius = 30
-# print(f"Após alterar Celsius, Fahrenheit: {termometro.fahrenheit}")
-
-# termometro.fahrenheit = 68
-# print(f"Após alterar Fahrenheit, Celsius: {termometro.celsius}")
-
-# try:
-#     termometro.celsius = -300
-# except ValueError as erro:
-#     print(erro)
+notebook.preco = -1500.00 #alteração direta
+print(f"Preço atualizado indevidamente: R$ {notebook.preco}") 
 
 
-#Revisao 
-# class Produtos():
-#     def __init__(self, preco):
-#         self.preco = preco
+print(notebook.venderProduto(3))   
+print(notebook.estoque)            
 
-#     @property
-#     def preco(self):
-#         return self._preco
+print(notebook.venderProduto(50))  
+print(notebook.estoque)            
 
-#     @preco.setter
-#     def preco(self, valor):
-#         if valor <= 0:
-#             raise ValueError("Valor inválido!")
-#         self._preco = valor
+print(notebook.reporProduto(20))    
+print(notebook.estoque)             
 
-#     def aplicarDesconto(self, percentual):
-#         return self.preco * (1 - percentual / 100)
+print(notebook.reporProduto(-5))    
+print(notebook.estoque)           
 
-# produto = Produtos(100)
-# print(produto.aplicarDesconto(10))  # 90.0
+#ex 5 integrador
+class Termometro():
+    def __init__(self, celsius,fahrenheit):
+          self.celsius = celsius
+          self.fahrenheit = fahrenheit
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, temperatura):
+        if temperatura < -273.15:
+            raise ValueError("Temperatura abaixo de zero absoluto não pode.")
+        self._celsius = temperatura
+        self._fahrenheit = (temperatura * 9 / 5) + 32
+
+    @property
+    def fahrenheit(self):
+        return self._fahrenheit
+
+    @fahrenheit.setter
+    def fahrenheit(self, temperatura):
+        celsius = (temperatura - 32) * 5 / 9
+        if celsius < -273.15:
+            raise ValueError("Temperatura abaixo de zero absoluto não pode.")
+        self._fahrenheit = temperatura
+        self._celsius = celsius
+
+
+termometro = Termometro(25, 77)
+print(f"Celsius: {termometro.celsius}")
+print(f"Fahrenheit: {termometro.fahrenheit}")
+
+termometro.celsius = 30
+print(f"Após alterar Celsius, Fahrenheit: {termometro.fahrenheit}")
+
+termometro.fahrenheit = 68
+print(f"Após alterar Fahrenheit, Celsius: {termometro.celsius}")
+
+try:
+    termometro.celsius = -300
+except ValueError as erro:
+    print(erro)
+
+
+# Revisao 
+class Produtos():
+    def __init__(self, preco):
+        self.preco = preco
+
+    @property
+    def preco(self):
+        return self._preco
+
+    @preco.setter
+    def preco(self, valor):
+        if valor <= 0:
+            raise ValueError("Valor inválido!")
+        self._preco = valor
+
+    def aplicarDesconto(self, percentual):
+        return self.preco * (1 - percentual / 100)
+
+produto = Produtos(100)
+print(produto.aplicarDesconto(10))  # 90.0
 
 
 # ============================================================
@@ -266,7 +266,30 @@ if __name__ == "__main__":
 # Aceite somente notas entre 0 e 10.
 # Crie aprovado(), retornando True se a nota for maior ou igual a 6.
 # Teste uma nota válida e uma nota fora do intervalo.
+class Aluno:
+    def __init__(self, nome, nota):
+        self.nome = nome
+        self.nota = nota
 
+    @property
+    def nota(self):
+        return self._nota 
+
+    @nota.setter
+    def nota(self, valor):
+        if valor < 0 or valor > 10:
+            raise ValueError("Apenas notas entre 0 e 10 são permitidas")
+        self._nota = valor
+
+    def aprovado(self) -> bool:
+        return self.nota >= 6
+aluno = Aluno("Diogo", 6)
+print(aluno.aprovado())
+
+try:
+    alunoTeste = Aluno("Pedro", -1)
+except ValueError as erro:
+    print(f"Erro: {erro}")
 
 # EXERCÍCIO 8 - Produto com estoque
 # Crie uma classe EstoqueProduto com nome, preco e quantidade.
@@ -275,21 +298,63 @@ if __name__ == "__main__":
 # Crie vender(quantidade), recusando vendas maiores que o estoque.
 # Crie repor(quantidade), aceitando somente quantidades maiores que zero.
 # Crie valor_total(), retornando preco vezes quantidade.
+class EstoqueProduto():
+    def __init__(self, nome, preco, qtd):
+        self.nome = nome
+        self.preco = preco
+        self.qtd = qtd
 
+    @property 
+    def preco(self):
+        return self._preco 
 
-# EXERCÍCIO 9 - Retângulo completo
-# Crie uma classe RetanguloSeguro com altura e largura.
-# Use properties para altura e largura.
-# Não aceite medidas menores ou iguais a zero.
-# Crie as properties area e perimetro.
-# Altere uma medida depois de criar o objeto e mostre os novos resultados.
+    @preco.setter
+    def preco(self, valor):
+        if valor <= 0:
+            raise ValueError("Preço abaixo ou igual a zero não podem.")
+        self._preco = valor
 
+    @property 
+    def qtd(self):
+        return self._qtd
 
-# EXERCÍCIO 10 - Carrinho de compras
-# Crie uma classe Carrinho com uma lista privada chamada _itens.
-# Cada item pode ser um dicionário com produto, preco e quantidade.
-# Crie uma property itens que devolva a lista de itens.
-# Crie adicionar_item(produto, preco, quantidade).
-# Não aceite preco menor ou igual a zero nem quantidade menor ou igual a zero.
-# Crie total() para calcular o valor total da compra.
-# Teste o carrinho com pelo menos dois produtos.
+    @qtd.setter
+    def qtd(self, valor):
+        if valor < 0:
+            raise ValueError("Quantidade negativa não pode.")
+        self._qtd = valor
+
+    def vender(self, qtd):
+        if qtd > self.qtd:
+            raise ValueError("Quantidade maior que estoque, venda negada.")
+        self.qtd -= qtd
+    def repor(self, qtd):
+        if qtd > 0:
+            self.qtd += qtd
+    def valorTotal(self):
+        return self.preco * self.qtd
+
+produto = EstoqueProduto("Mouse", 50, 20)
+print(produto.valorTotal()) #retorna 1000 
+
+produto.vender(5)
+print(produto.qtd) #15 no estoque
+print(produto.valorTotal())
+
+produto.repor(25)
+print(produto.qtd) #40 no estoque após repor
+
+try:
+    produto.vender(999)         
+except ValueError as erro:
+    print(f"Erro: {erro}")
+
+try:
+    produto2 = EstoqueProduto("Teclado", -10, 5)  
+except ValueError as erro:
+    print(f"Erro: {erro}")
+
+try:
+    produto.qtd = -1            
+except ValueError as erro:
+    print(f"Erro: {erro}")
