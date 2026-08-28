@@ -10,3 +10,4 @@ def execution(fuction, *args):
 
 
 variable = execution(hello, 'Good morning', 'Diogo')
+print(variable)
