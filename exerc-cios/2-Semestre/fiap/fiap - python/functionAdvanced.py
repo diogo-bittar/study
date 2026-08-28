@@ -120,3 +120,4 @@ def totalPoints(*points):
 
 
 passou = lambda nota: nota >= 7 
+
