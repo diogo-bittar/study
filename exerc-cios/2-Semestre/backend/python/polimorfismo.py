@@ -77,3 +77,50 @@ class Triangulo(FormaGeometrica):
         return perimetro
     
 #aplicando o polimorfismo  / Função que recebe qualquer objeto com método calcular_area() e imprime o resultado, sem checar o tipo.
+
+
+
+#Integrador: folha_pagamento(funcionarios) somando salários de uma lista com Funcionario, Gerente, Estagiario, cada um calculando salário de forma diferente.
+
+class Funcionario:
+    def __init__(self, salario):
+        self.salario = salario
+
+    def calcularSalario(self):
+        return self.salario
+
+class Gerente(Funcionario):
+    def __init__(self, salario, bonusFixo):
+        super().__init__(salario)
+        self.bonusFixo = bonusFixo
+
+    def calcularSalario(self):
+        return self.salario + self.bonusFixo
+        
+class Estagiario(Funcionario):
+    def __init__(self, salario, desconto):
+        super().__init__(salario)
+        self.desconto = desconto
+
+    def calcularSalario(self):
+        return self.salario - self.desconto
+
+
+def folha_pagamento(funcionarios):
+    total = 0
+
+    for funcionario in funcionarios:
+        total += funcionario.calcularSalario()
+
+    return total
+
+
+funcionarios = [
+    Funcionario(2000),
+    Gerente(3000, 500),
+    Estagiario(1500, 100)
+]
+
+print(f"Total da folha: R$ {folha_pagamento(funcionarios):.2f}")
+
+
