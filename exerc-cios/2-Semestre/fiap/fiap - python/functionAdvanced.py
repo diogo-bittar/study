@@ -131,7 +131,7 @@ print(dobroLambda(5))
 
 def dobroLam(num):
     return num * 2
-print(dobroLambda(5))
+print(dobroLam(5))
 
 def configurarCaptura(**opcs):
     modo = opcs.get("modo", "automatic")
